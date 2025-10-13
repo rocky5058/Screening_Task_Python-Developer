@@ -1,15 +1,40 @@
-# Task Management System (FastAPI + Pydantic)
+# Task Management System API
 
-Small Task Management API with MongoDB (preferred) or JSON-file fallback.
+A modular FastAPI-based Task Manager with MongoDB or JSON file storage.
 
-## Features
-- Create, list, update (mark completed), delete tasks.
-- Pydantic models for validation.
-- Async FastAPI endpoints with OpenAPI docs (`/docs`).
-- Data layer separated into `data_handler.py` supporting MongoDB or JSON file fallback.
-- Basic logging and search/filter support.
-- Unit test for JSON data handler (pytest).
+## Setup
 
-## Requirements
-- Python 3.9+
-- Install dependencies:
+1. Install dependencies:
+    pip install -r requirements.txt
+
+2. To enable MongoDB, set MONGO_URI as an environment variable.
+   Otherwise, local `tasks.json` will be used.
+
+3. Start the API server:
+    uvicorn app:app --reload
+
+## API Requests
+
+- Create a task:  
+  POST /tasks  
+  Request Body:  
+  {
+    "title": "Sample Task",
+    "description": "Details here"
+  }
+- List tasks:  
+  GET /tasks
+- Mark completed:  
+  PUT /tasks/{id}
+- Delete a task:  
+  DELETE /tasks/{id}
+
+## Testing
+
+Run:
+    python -m unittest discover tests
+
+## Assumptions
+
+- Uses UUID for task IDs.
+- MongoDB is used if `MONGO_URI` is set; else JSON file storage.
