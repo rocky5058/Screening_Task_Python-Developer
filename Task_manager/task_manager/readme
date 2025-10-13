@@ -1,0 +1,15 @@
+# Task Management System (FastAPI + Pydantic)
+
+Small Task Management API with MongoDB (preferred) or JSON-file fallback.
+
+## Features
+- Create, list, update (mark completed), delete tasks.
+- Pydantic models for validation.
+- Async FastAPI endpoints with OpenAPI docs (`/docs`).
+- Data layer separated into `data_handler.py` supporting MongoDB or JSON file fallback.
+- Basic logging and search/filter support.
+- Unit test for JSON data handler (pytest).
+
+## Requirements
+- Python 3.9+
+- Install dependencies:
